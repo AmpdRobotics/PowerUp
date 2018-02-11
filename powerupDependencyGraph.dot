@@ -1,0 +1,55 @@
+digraph g {
+	rankdir=BT
+	ordering=out
+	subgraph programming {
+		node[style=filled, fillcolor=palevioletred]
+		score_cube; get_cube; lift_cube; drop_cube; intake_cube; sense_cube; get_height; zero_elevator; raise_elevator; switch_auto; determine_color; drive_along_path; drive_with_sensors; vision_drive; score_with_ramps; prevent_accidental_deploy; levitate;
+	}
+	subgraph electrical {
+		node[style=filled, fillcolor=lightyellow]
+		intake_wiring; intake_motors; intake_cylinder; ir_sensor; limit_switch; elevator_encoder; elevator_motor; ramp_solenoid
+	}
+	score_cube -> get_cube
+	score_cube -> lift_cube
+	score_cube -> drop_cube
+	get_cube -> intake_cube
+	get_cube -> sense_cube
+	get_cube -> lift_cube
+	lift_cube -> get_height
+	lift_cube -> raise_elevator
+	built_elevator -> braces
+	built_elevator -> cable
+	cable -> pulleys
+	raise_elevator -> elevator_motor
+	elevator_motor -> built_elevator
+	get_height -> zero_elevator
+	zero_elevator -> limit_switch
+	get_height -> elevator_encoder
+	elevator_encoder -> elevator_motor
+	zero_elevator -> elevator_encoder
+	intake_cube -> intake_wiring
+	intake_motors -> intake_assemblies
+	intake_cylinder -> intake_assemblies
+	intake_wiring -> intake_motors
+	intake_wiring -> intake_cylinder
+	intake_wiring -> igus_channel
+	sense_cube -> ir_sensor
+	ir_sensor -> intake_wiring
+	drop_cube -> intake_wiring
+	drop_cube -> sense_cube
+	switch_auto -> determine_color
+	switch_auto -> drive_along_path
+	switch_auto -> vision_drive
+	switch_auto -> score_cube
+	vision_drive -> camera_mounted
+	drive_along_path -> drive_with_sensors
+	score_with_ramps -> levitate
+	score_with_ramps -> ramp_solenoid
+	score_with_ramps -> prevent_accidental_deploy
+	score_with_ramps -> ramps
+	ramps -> feet_mounted
+	ramps -> ramps_mounted
+	ramps_mounted -> platforms_mounted
+	platforms_mounted -> redesign_ramps
+	levitate -> score_cube
+}
