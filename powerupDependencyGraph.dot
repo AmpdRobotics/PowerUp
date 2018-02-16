@@ -9,6 +9,10 @@ digraph g {
 		node[style=filled, fillcolor=lightyellow]
 		intake_wiring; intake_motors; intake_cylinder; ir_sensor; limit_switch; elevator_encoder; elevator_motor; ramp_solenoid
 	}
+	subgraph complete {
+		node[shape=diamond]
+		pulleys; cable; braces; built_elevator; intake_assemblies
+	}
 	score_cube -> get_cube
 	score_cube -> lift_cube
 	score_cube -> drop_cube
