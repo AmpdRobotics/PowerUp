@@ -30,7 +30,7 @@ digraph g {
 		node[style="filled,dotted", fillcolor=palevioletred]
 		sense_cube; drop_cube; raise_elevator; drive_with_sensors;
 		sense_cube; zero_elevator; raise_elevator; get_height; intake_cube;
-		vision_drive; line_auto;
+		vision_drive; line_auto; lift_cube;
 	}
 	subgraph programming {
 		node[style=filled, fillcolor=palevioletred]
