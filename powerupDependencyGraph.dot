@@ -9,6 +9,20 @@ digraph g {
 		node[style=filled, fillcolor=lightblue, shape=diamond]
 		elevator_motor; elevator_encoder;
 	}
+	subgraph complete_goals {
+		rank=min
+		node[style=filled, fillcolor=palevioletred, shape=Mdiamond]
+	}
+	subgraph untested_goals {
+		rank=min
+		node[style="filled,dotted", fillcolor=palevioletred, shape=doubleoctagon]
+		line_auto;
+	}
+	subgraph goals {
+		rank=min
+		node[style=filled, fillcolor=palevioletred, shape=doubleoctagon]
+		score_cube; switch_auto; line_auto; levitate; score_with_ramps;
+	}
 	subgraph complete_programming {
 		node[style=filled, fillcolor=palevioletred, shape=diamond]
 	}
