@@ -43,6 +43,10 @@ digraph g {
 		node[style=filled, fillcolor=lightblue]
 		intake_wiring; ir_sensor; limit_switch; elevator_encoder; ramp_solenoid
 	}
+	subgraph redesign {
+		node[color=red, penwidth=2.0]
+		redesign_ramps; intake_redesign;
+	}
 
 	score_cube -> get_cube
 	score_cube -> lift_cube
