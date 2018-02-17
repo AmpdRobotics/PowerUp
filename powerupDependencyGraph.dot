@@ -16,13 +16,14 @@ digraph g {
 		node[style="filled,dotted", fillcolor=palevioletred]
 		sense_cube; drop_cube; raise_elevator; drive_with_sensors;
 		sense_cube; zero_elevator; raise_elevator; get_height; intake_cube;
-		vision_drive;
+		vision_drive; line_auto;
 	}
 	subgraph programming {
 		node[style=filled, fillcolor=palevioletred]
 		score_cube; switch_auto; determine_color;
 		drive_along_path; vision_drive; score_with_ramps;
 		prevent_accidental_deploy; levitate; lift_cube; get_cube;
+		line_auto;
 	}
 	subgraph electrical {
 		node[style=filled, fillcolor=lightblue]
@@ -60,6 +61,7 @@ digraph g {
 	switch_auto -> drive_along_path
 	switch_auto -> vision_drive
 	switch_auto -> score_cube
+	line_auto -> drive_with_sensors
 	vision_drive -> camera_mounted
 	drive_along_path -> drive_with_sensors
 	score_with_ramps -> levitate
