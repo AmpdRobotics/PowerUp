@@ -1,26 +1,34 @@
 digraph g {
 	rankdir=BT
 	ordering=out
-	subgraph programming {
-		node[style=filled, fillcolor=palevioletred]
-		score_cube; get_cube; lift_cube; drop_cube; intake_cube; sense_cube; get_height; zero_elevator; raise_elevator; switch_auto; determine_color; drive_along_path; vision_drive; score_with_ramps; prevent_accidental_deploy; levitate;
-	}
-	subgraph electrical {
-		node[style=filled, fillcolor=lightgreen]
-		intake_wiring; ir_sensor; limit_switch; elevator_encoder; ramp_solenoid
-	}
 	subgraph complete {
 		node[shape=diamond]
 		pulleys; cable; braces; built_elevator;
 	}
-        subgraph complete_electrical {
-                node[style=filled, fillcolor=lightgreen, shape=diamond]
-                elevator_motor;
-        }
-        subgraph complete_programming {
-                node[style=filled, fillcolor=palevioletred, shape=diamond]
-                drive_with_sensors;
-        }
+	subgraph complete_electrical {
+		node[style=filled, fillcolor=lightblue, shape=diamond]
+		elevator_motor; elevator_encoder;
+	}
+	subgraph complete_programming {
+		node[style=filled, fillcolor=palevioletred, shape=diamond]
+	}
+	subgraph untested_programming {
+		node[style="filled,dotted", fillcolor=palevioletred]
+		sense_cube; drop_cube; raise_elevator; drive_with_sensors;
+		sense_cube; zero_elevator; raise_elevator; get_height; intake_cube;
+		vision_drive;
+	}
+	subgraph programming {
+		node[style=filled, fillcolor=palevioletred]
+		score_cube; switch_auto; determine_color;
+		drive_along_path; vision_drive; score_with_ramps;
+		prevent_accidental_deploy; levitate; lift_cube; get_cube;
+	}
+	subgraph electrical {
+		node[style=filled, fillcolor=lightblue]
+		intake_wiring; ir_sensor; limit_switch; elevator_encoder; ramp_solenoid
+	}
+
 	score_cube -> get_cube
 	score_cube -> lift_cube
 	score_cube -> drop_cube
@@ -40,8 +48,9 @@ digraph g {
 	elevator_encoder -> elevator_motor
 	zero_elevator -> elevator_encoder
 	intake_cube -> intake_wiring
-        intake_wiring -> igus_channel
-	intake_wiring -> intake_assembly
+	intake_wiring -> igus_channel
+	igus_channel -> intake_assembly
+	igus_channel -> built_elevator
 	intake_assembly -> intake_redesign
 	sense_cube -> ir_sensor
 	ir_sensor -> intake_wiring
@@ -59,7 +68,6 @@ digraph g {
 	score_with_ramps -> ramps
 	ramps -> feet_mounted
 	ramps -> ramps_mounted
-	ramps_mounted -> platforms_mounted
-	platforms_mounted -> redesign_ramps
+	ramps_mounted -> redesign_ramps
 	levitate -> score_cube
 }
